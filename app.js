@@ -14,10 +14,11 @@ app.get('/', function (req, res ) {
 });
 app.get('/logined', function (req, res) {
     sess = req.session;
-    if (!req.query.username || !req.query.uesrpassword) {
+    if (!req.query.username || !req.query.password) {
         res.send('login failed');
-    }else if(req.query.username === "amy" && req.query.uesrpassword === "amyspassword"){
+    }else if(req.query.username === "amy" && req.query.password === "amyspassword"){
         sess.user = req.query.username ;
+        sess.password = req.query.password;
         sess.admin = true;
         res.sendfile('./views/logined.html');
 
